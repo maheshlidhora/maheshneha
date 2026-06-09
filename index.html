@@ -11,7 +11,15 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
+  <script>
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('my_audio');
 
+      audio.play().catch(err => {
+        console.log('Autoplay blocked by browser');
+      });
+    });
+  </script>
   <style>
     * {
       margin: 0;
@@ -623,6 +631,9 @@
 </head>
 
 <body>
+  <audio id="my_audio" autoplay loop preload="auto">
+    <source src="./song.mp3" type="audio/mpeg">
+  </audio>
 
   <div id="overlay" class="overlay"></div>
 
@@ -701,18 +712,7 @@
   </div>
 
   <div id="hint" class="hint">Tap outside the card to close</div>
-  <audio id="my_audio" autoplay loop>
-    <source src="./song.mp3" type="audio/mpeg">
-  </audio>
-  <script>
-    window.addEventListener('load', () => {
-      const audio = document.getElementById('my_audio');
 
-      audio.play().catch(err => {
-        console.log('Autoplay blocked by browser');
-      });
-    });
-  </script>
   <script>
     const envelope = document.getElementById('envelope');
     const card = document.getElementById('card');
